@@ -1,1 +1,1 @@
-docdoc-web
+web-autotests

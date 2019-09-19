@@ -1,0 +1,58 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.junit.platform.gradle.plugin'
+apply plugin: 'io.qameta.allure'
+
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath 'org.junit.platform:junit-platform-gradle-plugin:1.1.0'
+        classpath 'io.qameta.allure:allure-gradle:2.4'
+    }
+}
+
+allure {
+    version = '2.4.1'
+    autoconfigure = true
+    aspectjweaver = true
+    aspectjVersion = '1.8.10'
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    compile 'com.codeborne:selenide:5.2.3'
+    compile 'io.qameta.allure:allure-junit5:2.8.0'
+    compile 'io.qameta.allure:allure-selenide:2.8.0'
+    compile 'org.junit.jupiter:junit-jupiter-api:5.5.0-M1'
+    compile 'org.junit.jupiter:junit-jupiter-params:5.5.0-M1'
+    compile 'org.junit.platform:junit-platform-suite-api:1.5.0-M1'
+    compile 'org.junit.platform:junit-platform-runner:1.5.0-M1'
+    compile 'io.rest-assured:rest-assured:3.0.0'
+    compile 'org.json:json:20180813'
+    compile 'mysql:mysql-connector-java:5.1.6'
+    implementation 'com.github.javafaker:javafaker:0.18'
+    compile 'com.jcraft:jsch:0.1.51'
+    compile 'com.hierynomus:sshj:0.27.0'
+
+}
+
+junitPlatform {
+    filters {
+        engines {
+        }
+        tags {
+        }
+        packages {
+        }
+        includeClassNamePatterns '.*Tests'
+    }
+    enableStandardTestTask true
+}
+
